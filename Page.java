@@ -18,8 +18,35 @@ public class Page {
         this.lines = lines;
         this.code = code;
     }
+    //builds code for the page
+    public String buildPage() {
+        String codeString = new String(code);
+        String codeUse = "Lbl " + codeString + "\n";
+        String out = codeUse;
+        for (String line : buildDisp()) {
+            out += line + "\n";
+        }
+        out += "\n";
+        for (String line : buildCode()) {
+            out += line + "\n";
+        }
+        return out;
+    }
+    //builds text for the page
+    public String[] buildDisp() {
+        String[] out = new String[lines.length];
+        for (int i = 0; i < lines.length; i++) {
+            out[i] = lines[i].dispCode(i+1);
+        }
+        return out;
+    }
+    //builds backend of page
+    public String[] buildCode() {
+        String[] arr = {"", ""};
+        return arr;
+    }
     //returns true if code is an acceptable code
-    public Boolean checkCode(char[] code) {
+    public static Boolean checkCode(char[] code) {
         if (code.length != 2) {
             throw new IllegalArgumentException("Codes Must be 2 charachters");
         }
@@ -29,7 +56,7 @@ public class Page {
         return false;
     }
     //returns true if char can be used in codes
-    public Boolean checkChar(char letter) {
+    public static Boolean checkChar(char letter) {
         for (char check : allowed) {
             if (check == letter) {
                 return true;

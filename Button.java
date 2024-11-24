@@ -12,6 +12,6 @@ public class Button {
     }
 
     public String toString() {
-        return " " + buttonNumber + ":";
+        return buttonNumber + ":";
     }
 }

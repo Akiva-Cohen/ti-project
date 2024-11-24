@@ -32,6 +32,18 @@ public class Line {
         }
         return out;
     }
+    public String dispCode(int lineNumber) {
+        int offset = 1;
+        if (hasButton) {
+            offset++;
+        }
+        String out = "Output(" + lineNumber + "," + offset + ",\"";
+        if (hasButton) {
+            out += button.toString();
+        }
+        out += text + "\")";
+        return out;
+    }
     //
     public int getButtonNumber() {
         return button.getNumber();

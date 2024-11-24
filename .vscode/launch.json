@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "Main.java"
+            "mainClass": "Main"
         }
     ]
 }
