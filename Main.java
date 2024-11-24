@@ -7,6 +7,6 @@ public class Main {
         char[] code = {'A', 'B'};
         Page mine = new Page(lines);
         Code codes = new Code(code);
-        System.out.println(mine.buildPage(codes));
+        System.out.println(mine.buildPage(codes, codes, codes));
     }
 }

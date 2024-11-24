@@ -1,3 +1,5 @@
+import java.util.Array;
+
 public class Code {
     char[] code;
     public static final char[] allowed = {'A','B','C','D','E','F','G','H','I','J', 'k','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9','θ'};
@@ -20,6 +22,18 @@ public class Code {
         String out = new String(code);
         return out;
     }
+    public boolean equals(Code obj) {
+        if (this == obj){
+            return true
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        if (getCode().equals(obj.getCode())){
+            return true;
+        }
+        return false;
+    }
 
      //returns true if code is an acceptable code
      public static boolean checkCode(char[] code) {
@@ -40,4 +54,5 @@ public class Code {
         }
         return false;
     }
+
 }

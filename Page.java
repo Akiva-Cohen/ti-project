@@ -12,9 +12,6 @@ public class Page {
     //builds code for the page
     public String buildPage(Code key, Code next, Code previous) {
         String out = buildPageDisp(key) + buildPageCode(next, previous);
-        for (String line : buildCode()) {
-            out += line + "\n";
-        }
         return out;
     }
     public String buildPageDisp(Code key) {
@@ -37,13 +34,14 @@ public class Page {
     //assembles page backend
     public String buildPageCode(Code next, Code previous) {
         String out = "";
-        for (String line : buildCode()) {
+        for (String line : buildCode(next, previous)) {
             out += line + "\n";
         }
         return out;
     }
     //builds backend of page
-    public String[] buildCode() {
+    public String[] buildCode(Code next, Code previous) {
+        
         String[] arr = {"", ""};
         return arr;
     }
