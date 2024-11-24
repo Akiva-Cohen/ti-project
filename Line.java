@@ -1,7 +1,6 @@
 public class Line {
     String text;
     Boolean hasButton;
-    int buttonNumber;
     Button button;
     public Line(String text) {
         if (text.length() > 26) {
@@ -9,15 +8,11 @@ public class Line {
         }
         this.text = text;
         hasButton = false;
-        buttonNumber = -1;
     }
 
     public Line(String text, int buttonNumber) {
         if (text.length() > 23) {
             throw new IllegalArgumentException("String too long");
-        }
-        if (buttonNumber > 9 || buttonNumber < 0) {
-            throw new IllegalArgumentException("Button must have a positive single digit value");
         }
         try {
             this.button = new Button(buttonNumber);
@@ -31,7 +26,7 @@ public class Line {
     public String toString() {
         String out = "";
         if(hasButton) {
-            out = " " + buttonNumber + ":" + text;
+            out = button + text;
         } else {
             out = text;
         }
@@ -39,6 +34,6 @@ public class Line {
     }
     //
     public int getButtonNumber() {
-        return buttonNumber;
+        return button.getNumber();
     }
 }
