@@ -32,6 +32,11 @@ public class Line {
         }
         return out;
     }
+    
+    public boolean getHasButton() {
+        return hasButton;
+    }
+
     public String dispCode(int lineNumber) {
         int offset = 1;
         if (hasButton) {

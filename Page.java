@@ -4,6 +4,7 @@ public class Page {
     '0','1','2','3','4','5','6','7','8','9','θ'};
     Line[] lines;
     char[] code;
+    boolean hasButton;
     public Page(Line[] lines, char[] code) {
         if (lines.length > 10) {
             throw new IllegalArgumentException("only 10 lines allowed");
@@ -17,7 +18,9 @@ public class Page {
         }
         this.lines = lines;
         this.code = code;
+        this.hasButton = checkForButton(lines);
     }
+    
     //builds code for the page
     public String buildPage() {
         String codeString = new String(code);
@@ -46,7 +49,7 @@ public class Page {
         return arr;
     }
     //returns true if code is an acceptable code
-    public static Boolean checkCode(char[] code) {
+    public static boolean checkCode(char[] code) {
         if (code.length != 2) {
             throw new IllegalArgumentException("Codes Must be 2 charachters");
         }
@@ -56,9 +59,18 @@ public class Page {
         return false;
     }
     //returns true if char can be used in codes
-    public static Boolean checkChar(char letter) {
+    public static boolean checkChar(char letter) {
         for (char check : allowed) {
             if (check == letter) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //checks if any of the lines have buttons
+    public static boolean checkForButton(Line[] lines) {
+        for (Line a : lines) {
+            if (a.getHasButton()) {
                 return true;
             }
         }
