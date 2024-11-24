@@ -5,7 +5,8 @@ public class Main {
             lines[i] = new Line("this is line number" + i);
         }
         char[] code = {'A', 'B'};
-        Page mine = new Page(lines, code);
-        System.out.println(mine.buildPage());
+        Page mine = new Page(lines);
+        Code codes = new Code(code);
+        System.out.println(mine.buildPage(codes));
     }
 }

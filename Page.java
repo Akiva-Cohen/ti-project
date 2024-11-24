@@ -1,38 +1,29 @@
 public class Page {
-    static char[] allowed = {'A','B','C','D','E','F','G','H','I','J',
-    'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-    '0','1','2','3','4','5','6','7','8','9','θ'};
     Line[] lines;
-    char[] code;
     boolean hasButton;
-    public Page(Line[] lines, char[] code) {
+    public Page(Line[] lines) {
         if (lines.length > 10) {
             throw new IllegalArgumentException("only 10 lines allowed");
         }
-        try {
-            if (!checkCode(code)) {
-                throw new IllegalAccessException("may only use basic charachters in code");
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException(e);
-        }
         this.lines = lines;
-        this.code = code;
         this.hasButton = checkForButton(lines);
     }
-    
+
     //builds code for the page
-    public String buildPage() {
-        String codeString = new String(code);
-        String codeUse = "Lbl " + codeString + "\n";
+    public String buildPage(Code key, Code next, Code previous) {
+        String out = buildPageDisp(key) + buildPageCode(next, previous);
+        for (String line : buildCode()) {
+            out += line + "\n";
+        }
+        return out;
+    }
+    public String buildPageDisp(Code key) {
+        String codeUse = "Lbl " + key + "\n";
         String out = codeUse;
         for (String line : buildDisp()) {
             out += line + "\n";
         }
         out += "\n";
-        for (String line : buildCode()) {
-            out += line + "\n";
-        }
         return out;
     }
     //builds text for the page
@@ -43,30 +34,20 @@ public class Page {
         }
         return out;
     }
+    //assembles page backend
+    public String buildPageCode(Code next, Code previous) {
+        String out = "";
+        for (String line : buildCode()) {
+            out += line + "\n";
+        }
+        return out;
+    }
     //builds backend of page
     public String[] buildCode() {
         String[] arr = {"", ""};
         return arr;
     }
-    //returns true if code is an acceptable code
-    public static boolean checkCode(char[] code) {
-        if (code.length != 2) {
-            throw new IllegalArgumentException("Codes Must be 2 charachters");
-        }
-        if (checkChar(code[0]) && checkChar(code[1])) {
-            return true;
-        }
-        return false;
-    }
-    //returns true if char can be used in codes
-    public static boolean checkChar(char letter) {
-        for (char check : allowed) {
-            if (check == letter) {
-                return true;
-            }
-        }
-        return false;
-    }
+
     //checks if any of the lines have buttons
     public static boolean checkForButton(Line[] lines) {
         for (Line a : lines) {
