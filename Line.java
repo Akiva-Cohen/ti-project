@@ -11,7 +11,7 @@ public class Line {
     }
 
     public Line(String text, int buttonNumber) {
-        if (text.length() > 23) {
+        if (text.length() > 24) {
             throw new IllegalArgumentException("String too long");
         }
         try {
@@ -38,11 +38,7 @@ public class Line {
     }
 
     public String dispCode(int lineNumber) {
-        int offset = 1;
-        if (hasButton) {
-            offset++;
-        }
-        String out = "Output(" + lineNumber + "," + offset + ",\"";
+        String out = "Output(" + lineNumber + ",1,";
         if (hasButton) {
             out += button.toString();
         }

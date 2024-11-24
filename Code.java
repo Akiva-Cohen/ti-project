@@ -1,4 +1,4 @@
-import java.util.Array;
+import java.util.Arrays;
 
 public class Code {
     char[] code;
@@ -22,9 +22,10 @@ public class Code {
         String out = new String(code);
         return out;
     }
+
     public boolean equals(Code obj) {
         if (this == obj){
-            return true
+            return true;
         }
         if (obj == null || getClass() != obj.getClass()) {
             return false;

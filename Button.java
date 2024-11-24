@@ -34,4 +34,17 @@ public class Button {
     public static int numToCode(int buttonNum) {
         return keyMap.get(buttonNum);
     }
+    public static String nextButton(Code destination) {
+        return codeButton(Button.nextCode, destination);
+    }
+    public static String previousButton(Code destination) {
+        return codeButton(Button.backCode, destination);
+    }
+    public static String numButton(int num, Code destination) {
+        return codeButton(numToCode(num), destination);
+    }
+    public static String codeButton(int buttonCode, Code destination) {
+        String out = "If K=" + buttonCode + ":Goto " + destination;
+        return out;
+    }
 }
