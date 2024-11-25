@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 public class GUI {
-    public static void main(String[] args) {
+    public static void stuff() {
         JFrame window = new JFrame("testtest");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JTextField box = new JTextField(20);
