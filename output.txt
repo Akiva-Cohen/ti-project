@@ -1,20 +1,248 @@
 Lbl AA
-Output(1,1,please")
-Output(2,1,enter notes here i really")
-Output(3,1,want to enter notes here")
-Output(4,1,please")
-Output(5,1,ti-84")
-Output(6,1,")
-Output(7,1,ti-83")
-Output(8,1,ti-84")
-Output(9,1,")
-Output(10,1,")
+Output(1,1,"Lorem ipsum dolor sit")
+Output(2,1,"amet, consectetur")
+Output(3,1,"adipiscing elit. Integer")
+Output(4,1,"rhoncus auctor odio, in")
+Output(5,1,"vehicula nibh hendrerit")
+Output(6,1,"ac. Ut gravida tempor")
+Output(7,1,"velit, vel tincidunt nisl")
+Output(8,1,"euismod ac. Donec a congue")
+Output(9,1,"mauris. Nunc faucibus urna")
+Output(10,1,"non dui dictum, sed rutrum")
 
 Repeat K≠0
 getKey→K
 end
-If K=26:Goto AA
+If K=26:Goto AB
 If K=24:Goto AA
 Goto AA
+
+Lbl AB
+Output(1,1,"mi lacinia. Phasellus")
+Output(2,1,"tristique viverra ipsum,")
+Output(3,1,"eget sodales orci lacinia")
+Output(4,1,"eu. Sed eleifend luctus")
+Output(5,1,"ultricies. Mauris")
+Output(6,1,"imperdiet facilisis")
+Output(7,1,"facilisis. Integer sed")
+Output(8,1,"nisi risus. Vivamus")
+Output(9,1,"elementum nulla tincidunt,")
+Output(10,1,"suscipit felis a, vehicula")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AC
+If K=24:Goto AA
+Goto AB
+
+Lbl AC
+Output(1,1,"ante. In rhoncus tristique")
+Output(2,1,"commodo. Nam tincidunt")
+Output(3,1,"turpis vel aliquam cursus.")
+Output(4,1,"Nullam viverra tortor a")
+Output(5,1,"diam pellentesque, at")
+Output(6,1,"aliquam augue mollis. Cras")
+Output(7,1,"quam nibh, aliquam blandit")
+Output(8,1,"tincidunt a, molestie quis")
+Output(9,1,"mauris.")
+Output(10,1,"")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AD
+If K=24:Goto AB
+Goto AC
+
+Lbl AD
+Output(1,1,"Vivamus et eros est.")
+Output(2,1,"Suspendisse non ipsum")
+Output(3,1,"diam. Quisque vulputate")
+Output(4,1,"fermentum tellus. Maecenas")
+Output(5,1,"tempor efficitur lectus")
+Output(6,1,"sit amet accumsan. Nullam")
+Output(7,1,"imperdiet varius auctor.")
+Output(8,1,"Maecenas posuere velit vel")
+Output(9,1,"arcu molestie, nec")
+Output(10,1,"condimentum erat lobortis.")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AE
+If K=24:Goto AC
+Goto AD
+
+Lbl AE
+Output(1,1,"Donec cursus volutpat nunc")
+Output(2,1,"ultricies tincidunt. Lorem")
+Output(3,1,"ipsum dolor sit amet,")
+Output(4,1,"consectetur adipiscing")
+Output(5,1,"elit.")
+Output(6,1,"")
+Output(7,1,"Morbi vitae magna non")
+Output(8,1,"lacus consectetur porta.")
+Output(9,1,"Duis porta nunc eget")
+Output(10,1,"ultricies facilisis. In at")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AF
+If K=24:Goto AD
+Goto AE
+
+Lbl AF
+Output(1,1,"varius est. Donec aliquet")
+Output(2,1,"quis mauris sit amet")
+Output(3,1,"convallis. Nullam eleifend")
+Output(4,1,"lorem id mi mollis, eget")
+Output(5,1,"varius elit pretium.")
+Output(6,1,"Nullam tempus, orci id")
+Output(7,1,"luctus aliquet, nisl")
+Output(8,1,"tellus efficitur tortor,")
+Output(9,1,"in luctus libero leo in")
+Output(10,1,"neque. Nullam vitae lacus")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AG
+If K=24:Goto AE
+Goto AF
+
+Lbl AG
+Output(1,1,"sed odio dignissim")
+Output(2,1,"interdum. Quisque ac lacus")
+Output(3,1,"viverra, viverra sem a,")
+Output(4,1,"pretium orci. Aenean")
+Output(5,1,"dictum faucibus tellus, id")
+Output(6,1,"aliquet sapien commodo in.")
+Output(7,1,"In enim elit, consectetur")
+Output(8,1,"et pellentesque nec,")
+Output(9,1,"dapibus in lorem.")
+Output(10,1,"Phasellus tristique dui")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AH
+If K=24:Goto AF
+Goto AG
+
+Lbl AH
+Output(1,1,"dolor, in fermentum dolor")
+Output(2,1,"tempor nec. Nam sagittis")
+Output(3,1,"sem ut dui tincidunt")
+Output(4,1,"fringilla. Nullam accumsan")
+Output(5,1,"dui id varius sodales.")
+Output(6,1,"")
+Output(7,1,"Cras porttitor sit amet")
+Output(8,1,"massa vitae volutpat. Duis")
+Output(9,1,"interdum dictum tristique.")
+Output(10,1,"Aliquam aliquet mi sit")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AI
+If K=24:Goto AG
+Goto AH
+
+Lbl AI
+Output(1,1,"amet dignissim suscipit.")
+Output(2,1,"Pellentesque tristique")
+Output(3,1,"turpis vehicula, egestas")
+Output(4,1,"augue in, ornare purus.")
+Output(5,1,"Donec aliquam pretium")
+Output(6,1,"ullamcorper. In efficitur")
+Output(7,1,"ipsum in elementum")
+Output(8,1,"sollicitudin. Proin quis")
+Output(9,1,"purus a nulla rhoncus")
+Output(10,1,"sollicitudin eu vehicula")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AJ
+If K=24:Goto AH
+Goto AI
+
+Lbl AJ
+Output(1,1,"tortor. Curabitur ac sem")
+Output(2,1,"non neque varius interdum")
+Output(3,1,"vitae et purus. Aliquam")
+Output(4,1,"suscipit purus dui, ac")
+Output(5,1,"vulputate ante aliquet")
+Output(6,1,"eget. Phasellus at laoreet")
+Output(7,1,"augue, quis varius neque.")
+Output(8,1,"Aliquam quis finibus")
+Output(9,1,"metus. Vestibulum vitae")
+Output(10,1,"eros at neque hendrerit")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto Ak
+If K=24:Goto AI
+Goto AJ
+
+Lbl Ak
+Output(1,1,"blandit.")
+Output(2,1,"")
+Output(3,1,"Sed in rutrum dui. Fusce")
+Output(4,1,"suscipit velit et urna")
+Output(5,1,"vestibulum, eu pulvinar")
+Output(6,1,"risus condimentum. In")
+Output(7,1,"facilisis pellentesque")
+Output(8,1,"mattis. Pellentesque")
+Output(9,1,"aliquet vestibulum diam")
+Output(10,1,"nec interdum. Etiam")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AL
+If K=24:Goto AJ
+Goto Ak
+
+Lbl AL
+Output(1,1,"interdum eget urna non")
+Output(2,1,"porta. Vivamus sit amet")
+Output(3,1,"eros in lorem mattis")
+Output(4,1,"pulvinar. Curabitur")
+Output(5,1,"aliquam sit amet felis")
+Output(6,1,"vitae semper. Phasellus")
+Output(7,1,"eleifend nibh ac porta")
+Output(8,1,"gravida. In vel sem et")
+Output(9,1,"nibh rutrum finibus. Nunc")
+Output(10,1,"eu suscipit augue. Fusce")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AM
+If K=24:Goto Ak
+Goto AL
+
+Lbl AM
+Output(1,1,"fermentum fringilla")
+Output(2,1,"suscipit. Integer iaculis")
+Output(3,1,"porta nisi eu sodales.")
+Output(4,1,"Praesent eleifend nulla in")
+Output(5,1,"auctor dignissim. Donec")
+Output(6,1,"vulputate iaculis purus,")
+Output(7,1,"luctus imperdiet magna")
+Output(8,1,"ultricies et. Proin eu")
+Output(9,1,"lorem in dolor tristique")
+Output(10,1,"malesuada sed a elit. Nunc")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AM
+If K=24:Goto AL
+Goto AM
 
 
