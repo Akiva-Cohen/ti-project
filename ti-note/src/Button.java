@@ -1,6 +1,7 @@
 import java.util.HashMap;
 public class Button {
     int buttonNumber;
+    Code destination;
     public static final int nextCode = 26;
     public static final int backCode = 24;
 
@@ -18,19 +19,30 @@ public class Button {
         keyMap.put(8,73);
         keyMap.put(9,74);
     }
-    public Button(int buttonNumber) {
+    public Button(int buttonNumber, Code destination) {
         if (buttonNumber > 9 || buttonNumber < 0) {
             throw new IllegalArgumentException("Button must have a positive single digit value");
         }
         this.buttonNumber = buttonNumber;
+        this.destination = destination;
     }
     public int getNumber() {
         return buttonNumber;
     }
-
-    public String toString() {
-        return buttonNumber + ":";
+    public Code getDestination() {
+        return destination;
     }
+    public void setNumber(int in) {
+        buttonNumber = in;
+    }
+    public void setDestination(Code in) {
+        destination = in;
+    }
+
+    public String makeButtonCode() {
+        return numButton(buttonNumber, destination);
+    }
+    
     public static int numToCode(int buttonNum) {
         return keyMap.get(buttonNum);
     }

@@ -25,6 +25,7 @@ public class TextNote extends FlipBook {
         ArrayList<Page> out = new ArrayList<>();
         int count = 0;
         ArrayList<Line> mem = new ArrayList<>();
+        int ii = 0;
         for (Line i : lines){
             if (count < 10) {
                 mem.add(i);
@@ -34,10 +35,11 @@ public class TextNote extends FlipBook {
                 for (int b = 0; b < pgArr.length; b++) {
                     pgArr[b] = mem.get(b);
                 }
-                out.add(new Page(pgArr));
+                out.add(new Page(pgArr, Code.intToCode(ii)));
                 mem = new ArrayList<>();
                 mem.add(i);
                 count = 1;
+                ii++;
             }
         }
         return out;

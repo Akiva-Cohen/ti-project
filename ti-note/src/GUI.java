@@ -18,12 +18,10 @@ public class GUI {
         window.add(window1);
         window.pack();
         window.setVisible(true);
-        submit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String code =TextNote.submitTextNote(box.getText(), loop.isSelected());
-                createTxt(code, "test");
-            }
-        });
+        submit.addActionListener(e -> submited());
+    }
+    public static void submited() {
+
     }
     
     public static void createTxt(String text, String name) {

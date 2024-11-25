@@ -1,21 +1,115 @@
 import java.util.*;
 public class Page {
     Line[] lines;
-    boolean hasButton;
-    public Page(Line[] lines) {
+    ArrayList<Button> buttons;
+    Code key;
+    boolean hasNext;
+    Code next;
+    boolean hasPrevious;
+    Code previous;
+    public Page(Line[] lines, Code key) {
         if (lines.length > 10) {
             throw new IllegalArgumentException("only 10 lines allowed");
         }
         this.lines = lines;
-        this.hasButton = checkForButton(lines);
+        this.buttons = new ArrayList<Button>();
+        hasNext = false;
+        hasPrevious = false;
+    }
+    public Page(Line[] lines, Code key, Code next, Code previous) {
+        this(lines, key);
+        hasNext = true;
+        hasPrevious = true;
+        this.next = next;
+        this.previous = previous;
     }
 
+    public void setKey(Code key) {
+        if (isDestination(key)) {
+            throw new IllegalArgumentException("would make next or previous lead to self");
+        } else {
+            this.key = key;
+        }
+    }
+    public Code getKey() {
+        return key;
+    }
+
+    //checks if a code is a destination of a button
+    public boolean isDestination(Code key) {
+        if (hasNext) {
+            if (key.equals(next)) {
+                return true;
+            }
+        }
+        if (hasPrevious) {
+            if (key.equals(previous)) {
+                return true;
+            }
+        }
+        for (Button i : buttons) {
+            if (key.equals(i.getDestination())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void setNext(Code next) {
+        if (next.equals(key)) {
+            throw new IllegalArgumentException("buttons cannot lead to self");
+        } else {
+            this.next = next;
+            hasNext = true;
+        }
+    }
+    public boolean hasNext() {
+        return hasNext;
+    }
+    public Code getNext() {
+        if (!hasNext) {
+            throw new IllegalAccessError("next does not exist");
+        } else {
+            return next;
+        }
+    }
+    public void removeNext() {
+        hasNext = false;
+    }
+
+    public void setPrevious(Code previous) {
+        if (previous.equals(key)) {
+            throw new IllegalArgumentException("buttons cannot lead to self");
+        } else {
+            this.previous = previous;
+            hasPrevious = true;
+        }
+    }
+    public boolean hasPrevious() {
+        return hasPrevious;
+    }
+    public Code getPrevious() {
+        if (!hasPrevious) {
+            throw new IllegalAccessError("previous does not exist");
+        } else {
+            return previous;
+        }
+    }
+    public void removePrevious() {
+        hasPrevious = false;
+    }
+
+    public void addButton(Button button) {
+        buttons.add(button);
+    }
+    public void addButton(int num, Code destination) {
+        addButton(new Button(num, destination));
+    }
     //builds code for the page
-    public String buildPage(Code key, Code next, Code previous) {
-        String out = buildPageDisp(key) + buildPageCode(key, next, previous);
+    public String buildPage() {
+        String out = buildPageDisp() + buildPageCode();
         return out;
     }
-    public String buildPageDisp(Code key) {
+    public String buildPageDisp() {
         String codeUse = "Lbl " + key + "\n";
         String out = codeUse;
         for (String line : buildDisp()) {
@@ -33,34 +127,31 @@ public class Page {
         return out;
     }
     //assembles page backend
-    public String buildPageCode(Code key, Code next, Code previous) {
+    public String buildPageCode() {
         String out = "";
-        for (String line : codeBuilder(key, next, previous)) {
+        for (String line : codeBuilder()) {
             out += line + "\n";
         }
         return out;
     }
     //extra stuff after buildCode()
-    public ArrayList<String> codeBuilder(Code key, Code next, Code previous) {
+    public ArrayList<String> codeBuilder() {
         ArrayList<String> out = buildButtonListener();
-        out.addAll(buildFlipCode(key, next, previous));
+        out.addAll(buildFlipCode());
         out.addAll(buttonBuilder());
         out.add("Goto " + key);
         return out;
     }
     //builds backend of page
-    public ArrayList<String> buildFlipCode(Code key, Code next, Code previous) {
-        if (key.equals(next) || key.equals(previous)) {
-            if (key.equals(next) && key.equals(previous)) {
-                return new ArrayList<String>();
-            } else if (key.equals(next)) {
-                return buildFlipCode(previous);
-            } else {
-                return buildFlipCode(next, 0);
-            }
-        } else {
-            return buildFlipCode(next, previous);
+    public ArrayList<String> buildFlipCode() {
+        ArrayList<String> out = new ArrayList<>();
+        if (hasPrevious) {
+            out.add(Button.previousButton(previous));
         }
+        if (hasNext) {
+            out.add(Button.nextButton(next));
+        }
+        return out;
     }
     public ArrayList<String> buildButtonListener() {
         ArrayList<String> out = new ArrayList<String>();
@@ -69,34 +160,12 @@ public class Page {
         out.add("end");
         return out;
     }
-    public ArrayList<String> buildFlipCode(Code next, int fill) {
-        ArrayList<String> out = new ArrayList<String>();
-        out.add(Button.nextButton(next));
-        return out;
-    }
-    public ArrayList<String> buildFlipCode(Code previous) {
-        ArrayList<String> out = new ArrayList<String>();
-        out.add(Button.previousButton(previous));
-        return out;
-    }
-    public ArrayList<String> buildFlipCode(Code next, Code previous) {
-        ArrayList<String> out = new ArrayList<String>();
-        out.add(Button.nextButton(next));
-        out.add(Button.previousButton(previous));
-        return out;
-    }
     //adds all number buttons
     public ArrayList<String> buttonBuilder(){
         ArrayList<String> out = new ArrayList<String>();
-        return out;
-    }
-    //checks if any of the lines have buttons
-    public static boolean checkForButton(Line[] lines) {
-        for (Line a : lines) {
-            if (a.getHasButton()) {
-                return true;
-            }
+        for (Button i : buttons) {
+            out.add(i.makeButtonCode());
         }
-        return false;
+        return out;
     }
 }
