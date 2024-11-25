@@ -9,8 +9,6 @@ public class FlipBook extends Program {
         for (int i = 0; i < pages.length; i++) {
             int previous = i - 1;
             int next = i + 1;
-            pages[i].setPrevious(Code.intToCode(previous));
-            pages[i].setNext(Code.intToCode(next));
 
             if (previous < 0 && isLoop) {
                 if (isLoop) {
@@ -20,12 +18,18 @@ public class FlipBook extends Program {
                     pages[i].removePrevious();
                 }
             }
-            if (next == getPages().length) {
+            if (previous >= 0) {
+                pages[i].setPrevious(Code.intToCode(previous));
+            }
+            if (next == pages.length) {
                 if (isLoop) {
                 pages[i].setNext(Code.intToCode(0));
                 } else {
                     pages[i].removeNext();
                 }
+            }
+            if (next != pages.length) {
+                pages[i].setNext(Code.intToCode(next));
             }
             out[i] = pages[i].buildPage();
         }
@@ -33,6 +37,7 @@ public class FlipBook extends Program {
         for (String i : out) {
             thus += i + "\n";
         }
+        thus += "Lbl θ\nClrHome";
         return thus;
     }
 }

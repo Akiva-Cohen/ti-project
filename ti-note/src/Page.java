@@ -13,6 +13,7 @@ public class Page {
         }
         this.lines = lines;
         this.buttons = new ArrayList<Button>();
+        this.key = key;
         hasNext = false;
         hasPrevious = false;
     }
@@ -106,7 +107,7 @@ public class Page {
     }
     //builds code for the page
     public String buildPage() {
-        String out = buildPageDisp() + buildPageCode();
+        String out = "ClrHome\n" + buildPageDisp() + buildPageCode();
         return out;
     }
     public String buildPageDisp() {
@@ -140,6 +141,7 @@ public class Page {
         out.addAll(buildFlipCode());
         out.addAll(buttonBuilder());
         out.add("Goto " + key);
+        out.add("If K=45 or K=22:Goto θ");
         return out;
     }
     //builds backend of page
@@ -157,7 +159,7 @@ public class Page {
         ArrayList<String> out = new ArrayList<String>();
         out.add("Repeat K≠0");
         out.add("getKey→K");
-        out.add("end");
+        out.add("End");
         return out;
     }
     //adds all number buttons

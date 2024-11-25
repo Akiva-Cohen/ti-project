@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Code {
     char[] code;
-    public static final char[] allowed = {'A','B','C','D','E','F','G','H','I','J', 'k','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9','θ'};
+    public static final char[] allowed = {'A','B','C','D','E','F','G','H','I','J', 'k','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9'};
     public Code(char[] code) {
         try {
             if (!checkCode(code)) {
