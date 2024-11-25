@@ -7,12 +7,18 @@ public class GUI {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JTextArea box = new JTextArea("enter notes here",30,26);
         window.add(box);
+        JCheckBox loop = new JCheckBox("loops");
+        window.add(loop);
         JButton submit = new JButton("submit");
         window.add(submit);
         window.setLayout(new FlowLayout());
         window.pack();
         window.setVisible(true);
-        submit.addActionListener(e -> TextNote.submitTextNote(box.getText()));
+        submit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TextNote.submitTextNote(box.getText(), loop.isSelected());
+            }
+        });
     }
 
 

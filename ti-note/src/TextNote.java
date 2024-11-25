@@ -5,9 +5,9 @@ public class TextNote extends FlipBook {
         super(stringToNote(text));
     }
     //one method to rule them all
-    public static void submitTextNote(String text) {
+    public static void submitTextNote(String text, boolean isLoop) {
         TextNote note = new TextNote(text);
-        String code = note.programBuild(false);
+        String code = note.programBuild(isLoop);
         System.out.println(code);
         try {
         PrintWriter out = new PrintWriter("C:\\Users\\Minio\\OneDrive\\Desktop\\ti-project\\output.txt");
