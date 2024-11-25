@@ -39,7 +39,7 @@ public class Line {
     }
 
     public String dispCode(int lineNumber) {
-        String out = "Output(" + lineNumber + ",1,";
+        String out = "Output(" + lineNumber + ",1,\"";
         if (hasButton) {
             out += button.toString();
         }

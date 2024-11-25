@@ -1,9 +1,22 @@
 import java.util.ArrayList;
+import java.io.*;
 public class TextNote extends FlipBook {
     public TextNote(String text) {
         super(stringToNote(text));
     }
     //one method to rule them all
+    public static void submitTextNote(String text) {
+        TextNote note = new TextNote(text);
+        String code = note.programBuild(false);
+        System.out.println(code);
+        try {
+        PrintWriter out = new PrintWriter("C:\\Users\\Minio\\OneDrive\\Desktop\\ti-project\\output.txt");
+        out.println(code);
+        out.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("not found");
+        }
+    }
     public static Page[] stringToNote(String text) {
         ArrayList<String[]> wordLines = textToLines(text);
         ArrayList<String> mainLines = linesToLines(wordLines);

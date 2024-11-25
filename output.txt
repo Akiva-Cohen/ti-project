@@ -1,0 +1,20 @@
+Lbl AA
+Output(1,1,please")
+Output(2,1,enter notes here i really")
+Output(3,1,want to enter notes here")
+Output(4,1,please")
+Output(5,1,ti-84")
+Output(6,1,")
+Output(7,1,ti-83")
+Output(8,1,ti-84")
+Output(9,1,")
+Output(10,1,")
+
+Repeat K≠0
+getKey→K
+end
+If K=26:Goto AA
+If K=24:Goto AA
+Goto AA
+
+
