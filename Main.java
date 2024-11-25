@@ -1,12 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        Line[] lines = new Line[10];
-        for (int i = 0; i < 10; i++){
-            lines[i] = new Line("this is line number" + i);
-        }
-        char[] code = {'A', 'B'};
-        Page mine = new Page(lines);
-        Code codes = new Code(code);
-        System.out.println(mine.buildPage(codes, codes, codes));
+        String lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique tortor in neque iaculis, ac tincidunt est lobortis. Nam consequat facilisis nibh in hendrerit. Duis interdum rhoncus blandit. Mauris et ultricies velit. Suspendisse potenti. Pellentesque rhoncus tellus ante, ac imperdiet erat placerat sed. Curabitur rutrum, lectus a congue euismod, dui felis accumsan dui, eget feugiat enim metus porttitor purus. In scelerisque ornare augue non ultricies. Morbi suscipit elit sapien, ac eleifend augue commodo id. Curabitur feugiat at magna porttitor eleifend. Proin pretium nisi mi, non ultricies nunc ornare eu. Vestibulum eu erat at ipsum iaculis dictum id vel ante.\r\n \r\n + // Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus nec consequat dolor, at pulvinar lacus. In hac habitasse platea dictumst. Vivamus quis tortor gravida, vehicula dolor sed, rutrum lectus. Fusce ullamcorper ligula lacus, fringilla tincidunt ipsum pellentesque quis. Nullam laoreet mauris eu sollicitudin hendrerit. Phasellus urna lorem, tempus quis scelerisque vel, porttitor sit amet quam. Duis ultricies ultricies libero ac posuere. Quisque mi purus, egestas id gravida eu, molestie nec ex. Duis euismod, justo non efficitur tristique, ex risus malesuada quam, vitae imperdiet ex metus ut mauris. Fusce ut mi scelerisque, porttitor sapien vitae, fringilla urna. Cras mi est, ullamcorper vitae congue id, finibus eu erat. Aenean in nunc vitae diam congue aliquam. Nullam orci mauris, pharetra non efficitur non, feugiat non nibh. Mauris consequat eleifend ligula, ut vehicula enim finibus eget. Fusce in tincidunt purus.";
+        
+        TextNote flu = new TextNote(lorem);
+        System.out.println(flu.programBuild(true));
     }
 }

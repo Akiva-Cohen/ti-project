@@ -1,4 +1,5 @@
 public class Line {
+    public static final int lineLength = 26;
     String text;
     Boolean hasButton;
     Button button;
