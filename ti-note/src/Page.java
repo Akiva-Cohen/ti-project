@@ -107,12 +107,13 @@ public class Page {
     }
     //builds code for the page
     public String buildPage() {
-        String out = "ClrHome\n" + buildPageDisp() + buildPageCode();
+        String out = buildPageDisp() + buildPageCode();
         return out;
     }
     public String buildPageDisp() {
         String codeUse = "Lbl " + key + "\n";
         String out = codeUse;
+        out += "ClrHome\n";
         for (String line : buildDisp()) {
             out += line + "\n";
         }
@@ -140,8 +141,8 @@ public class Page {
         ArrayList<String> out = buildButtonListener();
         out.addAll(buildFlipCode());
         out.addAll(buttonBuilder());
-        out.add("Goto " + key);
         out.add("If K=45 or K=22:Goto θ");
+        out.add("Goto " + key);
         return out;
     }
     //builds backend of page
