@@ -10,7 +10,7 @@ public class GUI {
         JButton submit = new JButton("submit");
         window.add(submit);
         window.pack();
-        
+        window.setVisible(true);
     }
     /*public class GUI extends JFrame implements ActionListener {
         JTextField textBox;
