@@ -14,7 +14,7 @@ Repeat K≠0
 getKey→K
 end
 If K=26:Goto AB
-If K=24:Goto AA
+If K=24:Goto AJ
 Goto AA
 
 Lbl AB
@@ -184,7 +184,7 @@ Output(10,1,"vehicula at in dolor.")
 Repeat K≠0
 getKey→K
 end
-If K=26:Goto AJ
+If K=26:Goto AA
 If K=24:Goto AI
 Goto AJ
 
