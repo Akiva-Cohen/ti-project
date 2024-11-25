@@ -19,10 +19,12 @@ public class GUI {
         window.add(window1);
         window.pack();
         window.setVisible(true);
-        submit.addActionListener(e -> submited());
+        submit.addActionListener(e -> submited(box.getText()));
     }
-    public static void submited() {
-
+    public static void submited(String text) {
+        TextNote note = new TextNote(text);
+        text = note.programBuild(false);
+        createTxt(text, "test");
     }
     
     public static void createTxt(String text, String name) {
