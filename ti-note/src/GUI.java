@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.concurrent.Flow;
+
 public class GUI {
     public static String path = "C:\\Users\\Minio\\OneDrive\\Desktop\\ti-project\\";
     public static void textNoteWindow() {
