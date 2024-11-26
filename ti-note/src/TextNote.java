@@ -42,6 +42,11 @@ public class TextNote extends FlipBook {
                 ii++;
             }
         }
+        Line[] pgArr = new Line[mem.size()];
+        for (int i = 0; i < pgArr.length; i++) {
+            pgArr[i] = mem.get(i);
+        }
+        out.add(new Page(pgArr, Code.intToCode(ii)));
         return out;
     }
     public static ArrayList<Line> linesToLineClass(ArrayList<String> wordLines) {

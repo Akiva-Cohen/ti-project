@@ -19,16 +19,23 @@ public class GUI {
         window.add(window1);
         window.pack();
         window.setVisible(true);
-        submit.addActionListener(e -> submited(box.getText()));
+        submit.addActionListener(e -> submited(box.getText(), loop.isSelected(), window));
     }
-    public static void submited(String text) {
+    public static void submited(String text, boolean isLoop, JFrame window) {
         TextNote note = new TextNote(text);
-        text = note.programBuild(false);
-        createTxt(text, "test");
+        text = note.programBuild(isLoop);
+        //JPanel fileWindow = new JPanel(new FlowLayout());
+        JFileChooser filer = new JFileChooser();
+        int selection = filer.showSaveDialog(window);
+        if (selection == JFileChooser.APPROVE_OPTION) {
+            File file = filer.getSelectedFile();
+            createTxt(text, file.getAbsolutePath());
+        }
+        window.dispose();
     }
     
     public static void createTxt(String text, String name) {
-        File output = new File(path + name + ".txt");
+        File output = new File(name + ".txt");
         try {
             FileWriter write = new FileWriter(output);
             write.write(text);
