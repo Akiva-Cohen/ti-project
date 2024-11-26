@@ -1,0 +1,12 @@
+Lbl AA
+ClrHome
+Output(1,1,"enter notes here"
+
+Repeat K≠0
+getKey→K
+End
+If K=45 or K=22:Goto θ
+Goto AA
+
+Lbl θ
+ClrHome

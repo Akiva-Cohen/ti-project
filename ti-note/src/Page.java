@@ -10,6 +10,29 @@ public class Page {
     public Page(String text, Code key) {
         this(TextNote.textToLinesClassArray(text), key);
     }
+    public Page(String text, Code key, Button[] buttons) {
+        this(text, key);
+        for (Button i : buttons) {
+            this.buttons.add(i);
+        }
+    }
+    public Page(String text, Code key, Button[] buttons, Code next, Code previous) {
+        this(text, key, buttons);
+        this.next = next;
+        this.previous = previous;
+        hasNext = true;
+        hasPrevious = true;
+    }
+    public Page(String text, Code key, Button[] buttons, Code next) {
+        this(text, key, buttons);
+        this.next = next;
+        hasNext = true;
+    }
+    public Page(String text, Code key, Button[] buttons, Code previous, int waste) {
+        this(text, key, buttons);
+        this.previous = previous;
+        hasPrevious = true;
+    }
     public Page(Line[] lines, Code key) {
         if (lines.length > 10) {
             throw new IllegalArgumentException("only 10 lines allowed");
