@@ -26,6 +26,9 @@ public class Button {
         this.buttonNumber = buttonNumber;
         this.destination = destination;
     }
+    public String toString() {
+        return buttonNumber + ":" + destination;
+    }
     public int getNumber() {
         return buttonNumber;
     }
