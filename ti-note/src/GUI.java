@@ -5,8 +5,9 @@ import java.io.*;
 import java.util.concurrent.Flow;
 
 public class GUI {
-    public static String path = "C:\\Users\\Minio\\OneDrive\\Desktop\\ti-project\\";
+
     public static void textNoteWindow() {
+        Popup.prompt();
         JFrame window = new JFrame("testtest");
         JPanel window1 = new JPanel(new FlowLayout());
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

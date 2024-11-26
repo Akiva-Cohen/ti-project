@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 public class TextNote extends FlipBook {
     public TextNote(String text) {
         super(stringToNote(text));
@@ -10,10 +10,22 @@ public class TextNote extends FlipBook {
         System.out.println(code);
         return code;
     }
-    public static Page[] stringToNote(String text) {
+    public static Line[] textToLinesClassArray(String text) {
+        ArrayList<Line> lines = textToLinesClass(text);
+        Line[] out = new Line[lines.size()];
+        for (int i = 0; i < out.length; i++) {
+            out[i] = lines.get(i);
+        }
+        return out;
+    }
+    public static ArrayList<Line> textToLinesClass(String text) {
         ArrayList<String[]> wordLines = textToLines(text);
         ArrayList<String> mainLines = linesToLines(wordLines);
-        ArrayList<Line> linesCLass = linesToLineClass(mainLines);
+        ArrayList<Line> linesClass = linesToLineClass(mainLines);
+        return linesClass;
+    }
+    public static Page[] stringToNote(String text) {
+        ArrayList<Line> linesCLass = textToLinesClass(text);
         ArrayList<Page> pages = lineClassToPages(linesCLass);
         Page[] out = new Page[pages.size()];
         for (int i = 0; i < out.length; i++) {

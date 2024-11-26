@@ -7,6 +7,9 @@ public class Page {
     Code next;
     boolean hasPrevious;
     Code previous;
+    public Page(String text, Code key) {
+        this(TextNote.textToLinesClassArray(text), key);
+    }
     public Page(Line[] lines, Code key) {
         if (lines.length > 10) {
             throw new IllegalArgumentException("only 10 lines allowed");

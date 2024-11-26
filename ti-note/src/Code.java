@@ -6,7 +6,7 @@ public class Code {
     public Code(char[] code) {
         try {
             if (!checkCode(code)) {
-                throw new IllegalAccessException("may only use basic charachters in code");
+                throw new IllegalArgumentException("may only use basic charachters in code");
             }
         } catch (Exception e) {
             throw new IllegalArgumentException(e);
