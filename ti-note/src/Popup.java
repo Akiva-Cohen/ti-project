@@ -1,4 +1,5 @@
-import java.awt.GridLayout;
+import java.awt.*;
+import java.sql.JDBCType;
 
 import javax.swing.*;
 public class Popup extends JOptionPane {
@@ -13,6 +14,29 @@ public class Popup extends JOptionPane {
         buttonPanel.add(new JLabel("Enter Destination"));
         buttonPanel.add(buttonDrop);
         buttonPanel.add(codeArea1);
+    }
+    //returns true to go to main version, false to go to legacy mode
+    public static boolean startUpPopUp() {
+        JPanel panel = new JPanel(new FlowLayout());
+        
+        JRadioButton main = new JRadioButton("Use Page Manager Mode");
+        JRadioButton legacy = new JRadioButton("Use Single Text / Legacy mode (V0.1.0)");
+        ButtonGroup group = new ButtonGroup();
+        group.add(main);
+        group.add(legacy);
+        main.setSelected(true);
+        
+        panel.add(main);
+        panel.add(legacy);
+
+        showMessageDialog(null, panel, "select launch mode",JOptionPane.DEFAULT_OPTION);
+        
+            if (main.isSelected()) {
+                return true;
+            } else if (legacy.isSelected()) {
+                return false;
+            }
+        return false;
     }
     public static void promptNewButton() {
         promptNewButton(0, new Code(base));

@@ -3,7 +3,13 @@ import java.awt.*;
 import java.io.*;
 
 public class GUI {
-
+    public static void standardUI() {
+        JFrame frame = new JFrame("working");
+        JLabel label = new JLabel("i am working");
+        frame.add(label);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
     public static void textNoteWindow() {
         JFrame window = new JFrame("testtest");
         JPanel window1 = new JPanel(new FlowLayout());
