@@ -1,24 +1,52 @@
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
 
 import javax.swing.*;
 public class PageMaker extends JOptionPane {
     static JPanel panel;
-    static char[] chars = {'0', '0'};
-    static Button[] list = {new NumButton(1, new Code(chars)), new NumButton(1, new Code(chars))};
+    static JButton addButton;
+    static JList<Button> buttonList;
     static {
         panel = new JPanel(new GridLayout(2,1));
         JTextArea box = new JTextArea(10, 26);
         box.setLineWrap(true);
-        panel.add(box);
+        panel.add(box); 
         JPanel buttonManager = new JPanel(new GridLayout(1,2));
-        JList<Button> buttonList = new JList<>(list);
+        buttonList = new JList<>();
         buttonList.setSelectedIndex(0);
-        JButton addButton = new JButton("Add Button");
+        addButton = new JButton("Add Button");
         buttonManager.add(buttonList);
         buttonManager.add(addButton);
         panel.add(buttonManager);
     }
+    
     public static void promptNewPage() {
-        showConfirmDialog(null, panel,"Make New Button", JOptionPane.OK_CANCEL_OPTION);
+        DefaultListModel<Button> list = new DefaultListModel<Button>();
+        buttonList = new JList<Button>(list);
+        addButton.addActionListener(new ActionListener() {
+            //@Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Pressed");
+                try {
+                    list.add(0, Popup.promptNewButton());
+                    buttonList = new JList<Button>(list);
+                    buttonList.revalidate();
+                    buttonList.repaint();
+                    buttonList.ensureIndexIsVisible(0);
+                    buttonList.setVisible(true);
+                    buttonList.setVisibleRowCount(10);
+                } catch (IllegalAccessError ee) {}
+            }
+        });
+        showConfirmDialog(null, panel,"Make New Page", JOptionPane.OK_CANCEL_OPTION);
+    }
+    public static Button[] buttonListToArray(ArrayList<Button> list) {
+        Button[] out = new Button[list.size()];
+        for (int i = 0; i < out.length; i++) {
+            out[i] = list.get(i);
+        }
+        return out;
     }
 }

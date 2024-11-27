@@ -3,7 +3,7 @@ public class App {
         System.out.println("Hello, World!");
         //PageMaker.promptNewPage();
         if (Popup.startUpPopUp()) {
-            GUI.standardUI();
+            PageMaker.promptNewPage();
         } else {
             GUI.textNoteWindow();
         }
