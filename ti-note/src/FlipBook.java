@@ -11,25 +11,17 @@ public class FlipBook extends Program {
             int next = i + 1;
 
             if (previous < 0 && isLoop) {
-                if (isLoop) {
-                    previous = pages.length - 1;
-                    pages[i].setPrevious(Code.intToCode(previous));
-                } else {
-                    pages[i].removePrevious();
-                }
+                previous = pages.length - 1;
+                pages[i].addButton(new PreviousButton(Code.intToCode(previous)));
             }
             if (previous >= 0) {
-                pages[i].setPrevious(Code.intToCode(previous));
+                pages[i].addButton(new PreviousButton(Code.intToCode(previous)));
             }
             if (next == pages.length) {
-                if (isLoop) {
-                pages[i].setNext(Code.intToCode(0));
-                } else {
-                    pages[i].removeNext();
-                }
+                pages[i].addButton(new NextButton(Code.intToCode(0)));
             }
             if (next != pages.length) {
-                pages[i].setNext(Code.intToCode(next));
+                pages[i].addButton(new NextButton(Code.intToCode(next)));
             }
             out[i] = pages[i].buildPage();
         }

@@ -3,10 +3,6 @@ public class Page {
     Line[] lines;
     ArrayList<Button> buttons;
     Code key;
-    boolean hasNext;
-    Code next;
-    boolean hasPrevious;
-    Code previous;
     public Page(String text, Code key) {
         this(TextNote.textToLinesClassArray(text), key);
     }
@@ -16,23 +12,6 @@ public class Page {
             this.buttons.add(i);
         }
     }
-    public Page(String text, Code key, Button[] buttons, Code next, Code previous) {
-        this(text, key, buttons);
-        this.next = next;
-        this.previous = previous;
-        hasNext = true;
-        hasPrevious = true;
-    }
-    public Page(String text, Code key, Button[] buttons, Code next) {
-        this(text, key, buttons);
-        this.next = next;
-        hasNext = true;
-    }
-    public Page(String text, Code key, Button[] buttons, Code previous, int waste) {
-        this(text, key, buttons);
-        this.previous = previous;
-        hasPrevious = true;
-    }
     public Page(Line[] lines, Code key) {
         if (lines.length > 10) {
             throw new IllegalArgumentException("only 10 lines allowed");
@@ -40,15 +19,6 @@ public class Page {
         this.lines = lines;
         this.buttons = new ArrayList<Button>();
         this.key = key;
-        hasNext = false;
-        hasPrevious = false;
-    }
-    public Page(Line[] lines, Code key, Code next, Code previous) {
-        this(lines, key);
-        hasNext = true;
-        hasPrevious = true;
-        this.next = next;
-        this.previous = previous;
     }
 
     public void setKey(Code key) {
@@ -64,72 +34,19 @@ public class Page {
 
     //checks if a code is a destination of a button
     public boolean isDestination(Code key) {
-        if (hasNext) {
-            if (key.equals(next)) {
-                return true;
-            }
-        }
-        if (hasPrevious) {
-            if (key.equals(previous)) {
-                return true;
-            }
-        }
-        for (Button i : buttons) {
+       for (Button i : buttons) {
             if (key.equals(i.getDestination())) {
                 return true;
             }
         }
         return false;
     }
-    public void setNext(Code next) {
-        if (next.equals(key)) {
-            throw new IllegalArgumentException("buttons cannot lead to self");
-        } else {
-            this.next = next;
-            hasNext = true;
-        }
-    }
-    public boolean hasNext() {
-        return hasNext;
-    }
-    public Code getNext() {
-        if (!hasNext) {
-            throw new IllegalAccessError("next does not exist");
-        } else {
-            return next;
-        }
-    }
-    public void removeNext() {
-        hasNext = false;
-    }
-
-    public void setPrevious(Code previous) {
-        if (previous.equals(key)) {
-            throw new IllegalArgumentException("buttons cannot lead to self");
-        } else {
-            this.previous = previous;
-            hasPrevious = true;
-        }
-    }
-    public boolean hasPrevious() {
-        return hasPrevious;
-    }
-    public Code getPrevious() {
-        if (!hasPrevious) {
-            throw new IllegalAccessError("previous does not exist");
-        } else {
-            return previous;
-        }
-    }
-    public void removePrevious() {
-        hasPrevious = false;
-    }
 
     public void addButton(Button button) {
         buttons.add(button);
     }
-    public void addButton(int num, Code destination) {
-        addButton(new Button(num, destination));
+    public void addNumButton(int num, Code destination) {
+        addButton(new NumButton(num, destination));
     }
     //builds code for the page
     public String buildPage() {
@@ -165,23 +82,13 @@ public class Page {
     //extra stuff after buildCode()
     public ArrayList<String> codeBuilder() {
         ArrayList<String> out = buildButtonListener();
-        out.addAll(buildFlipCode());
         out.addAll(buttonBuilder());
         out.add("If K=45 or K=22:Goto θ");
         out.add("Goto " + key);
         return out;
     }
     //builds backend of page
-    public ArrayList<String> buildFlipCode() {
-        ArrayList<String> out = new ArrayList<>();
-        if (hasPrevious) {
-            out.add(Button.previousButton(previous));
-        }
-        if (hasNext) {
-            out.add(Button.nextButton(next));
-        }
-        return out;
-    }
+
     public ArrayList<String> buildButtonListener() {
         ArrayList<String> out = new ArrayList<String>();
         out.add("Repeat K≠0");
@@ -189,7 +96,7 @@ public class Page {
         out.add("End");
         return out;
     }
-    //adds all number buttons
+    //adds all buttons
     public ArrayList<String> buttonBuilder(){
         ArrayList<String> out = new ArrayList<String>();
         for (Button i : buttons) {
