@@ -31,6 +31,19 @@ public class Page {
     public Code getKey() {
         return key;
     }
+    public String toString() {
+        return key.toString();
+    }
+    public String getText() {
+        String out = "";
+        for (Line line : lines) {
+            out += line + "\n";
+        }
+        return out;
+    }
+    public ArrayList<Button> getButtons() {
+        return buttons;
+    }
 
     //checks if a code is a destination of a button
     public boolean isDestination(Code key) {

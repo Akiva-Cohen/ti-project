@@ -8,6 +8,14 @@ public class PageMaker extends JOptionPane {
     static final char[] chars = {'0', '0'};
     static final Code basic = new Code(chars);
     static JList<Button> buttonList;
+    public static Page update(Page start) {
+        ArrayList<Button> arr = start.getButtons();
+        DefaultListModel<Button> def = new DefaultListModel<>();
+        for (Button i : arr) {
+            def.addElement(i);
+        }
+        return promptNewPage(start.getText(), def, start.getKey().toString());
+    }
     public static Page promptNewPage() {
         return promptNewPage("", new DefaultListModel<Button>(), "");
     }
@@ -58,7 +66,7 @@ public class PageMaker extends JOptionPane {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Pressed");
                 try {
-                    list.add(0, Popup.promptNewButton());
+                    list.addElement(Popup.promptNewButton());
                 } catch (IllegalAccessError ee) {}
             }
         });

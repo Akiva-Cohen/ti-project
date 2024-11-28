@@ -1,14 +1,48 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 
 public class GUI {
     public static void standardUI() {
         JFrame frame = new JFrame("working");
-        JLabel label = new JLabel("i am working");
-        frame.add(label);
+        JPanel panel = new JPanel(new GridLayout(1, 3));
+        DefaultListModel<Page> list = new DefaultListModel<>();
+        JList<Page> pageList = new JList<Page>(list);
+        panel.add(pageList);
+        JButton edit = new JButton("Edit");
+        panel.add(edit);
+        edit.setVisible(false );
+        JButton add = new JButton("Add Page");
+        panel.add(add);
+        frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.pack();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        add.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                list.addElement(PageMaker.promptNewPage());
+            }
+        });
+        pageList.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                if (pageList.getSelectedValue() == null) {
+                    edit.setVisible(false);
+                } else {
+                    edit.setVisible(true);
+                }
+            }
+        });
+        edit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                list.set(pageList.getSelectedIndex(), PageMaker.update(pageList.getSelectedValue()));
+            }
+        });
     }
     public static void textNoteWindow() {
         JFrame window = new JFrame("testtest");
