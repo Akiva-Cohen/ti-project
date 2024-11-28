@@ -45,6 +45,12 @@ public class GUI {
                 }
             }
         });
+        up.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                list.add(0,pageList.getSelectedValue());
+                list.remove(pageList.getSelectedIndex());
+            }
+        });
         edit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 list.set(pageList.getSelectedIndex(), PageMaker.update(pageList.getSelectedValue()));
