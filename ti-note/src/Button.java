@@ -3,7 +3,9 @@ public class Button {
     public Button(Code destination) {
         this.destination = destination;
     }
-
+    public int getNumber() {
+        throw new IllegalAccessError("why on gods green earth would you call this");
+    }
     public Code getDestination() {
         return destination;
     }
