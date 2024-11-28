@@ -10,4 +10,7 @@ public class PreviousButton extends Button {
     public String makeButtonCode() {
         return codeButton(backCode, destination);
     }
+    public String toString() {
+        return "previous:" + destination;
+    }
 }

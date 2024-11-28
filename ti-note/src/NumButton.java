@@ -28,7 +28,7 @@ public class NumButton extends Button {
     }
 
     public String toString() {
-        return "key " + buttonNumber + " : Destination" + destination;
+        return "0" + buttonNumber + ":" + destination;
     }
     public int getNumber() {
         return buttonNumber;

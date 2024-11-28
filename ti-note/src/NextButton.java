@@ -6,7 +6,7 @@ public class NextButton extends Button {
         super(destination);
     }
     public String toString() {
-        return "next: Destination " + destination;
+        return "next:" + destination;
     }
 
     public String makeButtonCode() {
