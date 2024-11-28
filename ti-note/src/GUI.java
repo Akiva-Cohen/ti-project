@@ -10,16 +10,23 @@ import java.io.*;
 public class GUI {
     public static void standardUI() {
         JFrame frame = new JFrame("working");
+        frame.setLayout(new GridLayout(2, 1));
         JPanel panel = new JPanel(new GridLayout(1, 3));
         DefaultListModel<Page> list = new DefaultListModel<>();
         JList<Page> pageList = new JList<Page>(list);
         panel.add(pageList);
+        JPanel editPanel = new JPanel(new GridLayout(2, 1));
+        JButton up = new JButton("Make First");
+        editPanel.add(up);
         JButton edit = new JButton("Edit");
-        panel.add(edit);
-        edit.setVisible(false );
+        editPanel.add(edit);
+        panel.add(editPanel);
+        editPanel.setVisible(false );
         JButton add = new JButton("Add Page");
         panel.add(add);
         frame.add(panel);
+        JButton submit = new JButton("Submit");
+        frame.add(submit);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.pack();
@@ -32,15 +39,36 @@ public class GUI {
         pageList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (pageList.getSelectedValue() == null) {
-                    edit.setVisible(false);
+                    editPanel.setVisible(false);
                 } else {
-                    edit.setVisible(true);
+                    editPanel.setVisible(true);
                 }
             }
         });
         edit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 list.set(pageList.getSelectedIndex(), PageMaker.update(pageList.getSelectedValue()));
+            }
+        });
+        submit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Object[] objs = list.toArray();
+                Page[] pages = new Page[objs.length];
+                for (int i = 0; i < objs.length; i++) {
+                    pages[i] = (Page)objs[i];
+                }
+                Program program = new Program(pages);
+                if (program.checkConections()) {
+                    JFileChooser filler = new JFileChooser();
+                    int selection = filler.showSaveDialog(submit);
+                    if (selection == JFileChooser.APPROVE_OPTION) {
+                        File file = filler.getSelectedFile();
+                        createTxt(program.programBuild(), file.getAbsolutePath());
+                        frame.dispose();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You Have Buttons Leading to Places that Don't Exist");
+                }
             }
         });
     }

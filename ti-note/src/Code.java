@@ -29,7 +29,7 @@ public class Code {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        if (getCode().equals(obj.getCode())){
+        if (new String(getCode()).equals(new String(obj.getCode()))){
             return true;
         }
         return false;
