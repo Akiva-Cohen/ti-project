@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 public class PageMaker extends JOptionPane {
+    static final char[] chars = {'0', '0'};
+    static final Code basic = new Code(chars);
     static JPanel panel;
     static JButton addButton;
     static JList<Button> buttonList;
@@ -17,6 +19,8 @@ public class PageMaker extends JOptionPane {
     static JButton apply = new JButton("Apply");
     static JButton delete = new JButton("Delete");
     static JPanel buttonPanel;
+    static JTextArea box = new JTextArea(10, 26);
+    static JTextField keyField = new JTextField();
     static {
         buttonPanel = new JPanel(new GridLayout(4, 1));
         buttonPanel.add(buttonDrop);
@@ -24,11 +28,14 @@ public class PageMaker extends JOptionPane {
         buttonPanel.add(apply);
         buttonPanel.add(delete);
         panel = new JPanel(new GridLayout(3,1));
-        JTextArea box = new JTextArea(10, 26);
         box.setLineWrap(true);
+        box.setColumns(26);
         panel.add(box, 0); 
         JSeparator line = new JSeparator();
-        panel.add(line, 1);
+        JPanel middle = new JPanel(new GridLayout(3,1));
+        middle.add(line);
+        middle.add(keyField);
+        panel.add(middle,1);
         buttonManager = new JPanel(new GridLayout(1,3));
         buttonList = new JList<>();
         buttonList.setSelectedIndex(0);
@@ -41,7 +48,7 @@ public class PageMaker extends JOptionPane {
         panel.add(buttonManager, 2);
     }
     
-    public static void promptNewPage() {
+    public static Page promptNewPage() {
         buttonPanel.setVisible(false);
         DefaultListModel<Button> list = new DefaultListModel<Button>();
         buttonList = new JList<Button>(list);
@@ -62,8 +69,6 @@ public class PageMaker extends JOptionPane {
                     buttonPanel.setVisible(false);
                 } else {
                     codeArea1.setText(buttonList.getSelectedValue().getDestination().toString());
-                    char[] chars = {'0', '0'};
-                    Code basic = new Code(chars);
                     if(buttonList.getSelectedValue().getClass().equals(new NextButton(basic).getClass())) {
                         buttonDrop.setSelectedItem("next");
                     } else if (buttonList.getSelectedValue().getClass().equals(new PreviousButton(basic).getClass())) {
@@ -101,7 +106,57 @@ public class PageMaker extends JOptionPane {
                 list.set(buttonList.getSelectedIndex(), out);
             }
         });
+        box.setColumns(26);
         showConfirmDialog(null, panel,"Make New Page", JOptionPane.OK_CANCEL_OPTION);
+        Object[] arrOut = list.toArray();
+        Button[] buttonsOut = new Button[arrOut.length];
+        for (int i = 0; i < arrOut.length; i++) {
+            buttonsOut[i] = (Button)arrOut[i];
+        }
+        boolean hasNext = false;
+        boolean hasPrevious = false;
+        Button genPrevious = new PreviousButton(basic);
+        Button genNext = new NextButton(basic);
+        ArrayList<Integer> buttonNums = new ArrayList<>();
+        for (int i = 0; i < arrOut.length; i++) {
+            if (buttonsOut[i].getClass().equals(genPrevious.getClass())) {
+                if (hasPrevious) {
+                    showMessageDialog(null, "Can only have one previous button");
+                    throw new IllegalAccessError("multiple previous buttons");
+                } else {
+                    hasPrevious = true;
+                }
+            } else if (buttonsOut[i].getClass().equals(genNext.getClass())) {
+                if (hasNext) {
+                    showMessageDialog(null, "Can only have one next button");
+                    throw new IllegalAccessError("multiple next buttons");
+                } else {
+                    hasNext = true;
+                }
+            } else {
+                if (buttonNums.contains(buttonsOut[i].getNumber())) {
+                    showMessageDialog(null, "can only have one of each button number");
+                    throw new IllegalAccessError("multiple of the same number button");
+                } else {
+                    buttonNums.add(buttonsOut[i].getNumber());
+                }
+            }
+        }
+        Code outCode;
+        try {
+            outCode = new Code(keyField.getText().toCharArray());
+        } catch (IllegalArgumentException e) {
+            showMessageDialog(null, "use valid code pls");
+            throw new IllegalAccessError("Used invalid code");
+        }
+        Page out;
+        try {
+            out = new Page(box.getText(), outCode, buttonsOut);
+        } catch (IllegalArgumentException e) {
+            showMessageDialog(null, "text too long");
+            throw new IllegalAccessError("text too long");
+        }
+        return out;
     }
     public static Button[] buttonListToArray(ArrayList<Button> list) {
         Button[] out = new Button[list.size()];
