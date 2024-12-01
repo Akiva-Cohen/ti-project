@@ -29,7 +29,7 @@ public class Popup extends JOptionPane {
         panel.add(main);
         panel.add(legacy);
 
-        showMessageDialog(null, panel, "select launch mode",JOptionPane.DEFAULT_OPTION);
+        showConfirmDialog(null, panel, "select launch mode",JOptionPane.OK_OPTION);
         
             if (main.isSelected()) {
                 return true;

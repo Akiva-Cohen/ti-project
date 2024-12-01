@@ -7,7 +7,7 @@ public class App {
             boolean op = Popup.startUpPopUp();
             if (op) {
                 GUI.standardUI();
-            } else if (!op) {   
+            } else if (!op) {
                 GUI.textNoteWindow();
             }
         } catch (IllegalAccessError e) {}
