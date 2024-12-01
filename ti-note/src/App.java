@@ -6,6 +6,8 @@ public class App {
         System.setProperty("awt.useSystemAAFontSettings", "on");
         System.setProperty("sun.java2d.dpiaware", "true");
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        System.setProperty("sun.java2d.uiScale", "2.0"); // Set scaling factor
+
 
 
         if (Popup.startUpPopUp()) {
