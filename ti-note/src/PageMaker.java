@@ -14,7 +14,11 @@ public class PageMaker extends JOptionPane {
         for (Button i : arr) {
             def.addElement(i);
         }
-        return promptNewPage(start.getText(), def, start.getKey().toString());
+        try {
+            return promptNewPage(start.getText(), def, start.getKey().toString());
+        } catch (IllegalAccessError e) {
+            throw new IllegalAccessError("they cancelled");
+        }
     }
     public static Page promptNewPage() {
         return promptNewPage("", new DefaultListModel<Button>(), "");

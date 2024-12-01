@@ -53,7 +53,11 @@ public class GUI {
         });
         edit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
                 list.set(pageList.getSelectedIndex(), PageMaker.update(pageList.getSelectedValue()));
+                } catch (IllegalAccessError ee) {
+
+                }
             }
         });
         submit.addActionListener(new ActionListener() {
