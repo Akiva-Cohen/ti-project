@@ -7,7 +7,6 @@ public class TextNote extends FlipBook {
     public static String submitTextNote(String text, boolean isLoop) {
         TextNote note = new TextNote(text);
         String code = note.programBuild(isLoop);
-        System.out.println(code);
         return code;
     }
     public static Line[] textToLinesClassArray(String text) {

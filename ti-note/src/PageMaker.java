@@ -68,7 +68,6 @@ public class PageMaker extends JOptionPane {
         buttonManager.add(buttonList,0);
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Pressed");
                 try {
                     list.addElement(Popup.promptNewButton());
                 } catch (IllegalAccessError ee) {}

@@ -117,7 +117,6 @@ public class GUI {
             write.write(text);
             write.close();
         } catch (IOException e) {
-            System.out.println("error");
         }
     }
     /*public class GUI extends JFrame implements ActionListener {
