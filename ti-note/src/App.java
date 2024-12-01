@@ -4,11 +4,13 @@ public class App {
     public static void main(String[] args) throws Exception {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         try {
-            if (Popup.startUpPopUp()) {
+            boolean op = Popup.startUpPopUp();
+            if (op) {
                 GUI.standardUI();
-            } else {   
+            } else if (!op) {   
                 GUI.textNoteWindow();
             }
         } catch (IllegalAccessError e) {}
     }
 }
+
