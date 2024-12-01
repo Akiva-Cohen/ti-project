@@ -36,7 +36,7 @@ public class Popup extends JOptionPane {
             } else if (legacy.isSelected()) {
                 return false;
             }
-        return false;
+        throw new IllegalAccessError("they exited");
     }
     public static Button promptNewButton() {
         return promptNewButton(0, new Code(base));
