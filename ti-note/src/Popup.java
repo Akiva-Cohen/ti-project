@@ -29,14 +29,16 @@ public class Popup extends JOptionPane {
         panel.add(main);
         panel.add(legacy);
 
-        showConfirmDialog(null, panel, "select launch mode",JOptionPane.OK_OPTION);
-        
+        int cont = showConfirmDialog(null, panel, "select launch mode",JOptionPane.OK_CANCEL_OPTION);
+        if (cont == JOptionPane.OK_OPTION) {
             if (main.isSelected()) {
                 return true;
             } else if (legacy.isSelected()) {
                 return false;
             }
-        throw new IllegalAccessError("they exited");
+        } else {
+            throw new IllegalAccessError("they exited");
+        }
     }
     public static Button promptNewButton() {
         return promptNewButton(0, new Code(base));
