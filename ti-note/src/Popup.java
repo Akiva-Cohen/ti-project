@@ -36,6 +36,7 @@ public class Popup extends JOptionPane {
             } else if (legacy.isSelected()) {
                 return false;
             }
+            return false;
         } else {
             throw new IllegalAccessError("they exited");
         }
