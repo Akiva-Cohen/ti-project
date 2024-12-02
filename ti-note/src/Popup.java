@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.sql.JDBCType;
 
 import javax.swing.*;
 public class Popup extends JOptionPane {

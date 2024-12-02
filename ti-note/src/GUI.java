@@ -33,7 +33,9 @@ public class GUI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                list.addElement(PageMaker.promptNewPage());
+                try {
+                    list.addElement(PageMaker.promptNewPage());
+                } catch (IllegalAccessError ee) {}
             }
         });
         pageList.addListSelectionListener(new ListSelectionListener() {
