@@ -72,8 +72,8 @@ public class Code {
         if (seed > (allowed.length * (allowed.length / 2) -1) || seed < 0) {
             throw new IllegalArgumentException("invalid seed");
         }
-        int num1 = seed / allowed.length;
-        int num2 = seed % allowed.length;
+        int num1 = seed / (allowed.length / 2);
+        int num2 = seed % (allowed.length / 2);
         char c1 = allowed[num1];
         char c2 = allowed[num2 * 2];
         char[] arr = {c1, c2};
