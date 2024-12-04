@@ -11,6 +11,6 @@ public class PreviousButton extends Button {
         return codeButton(backCode, destination);
     }
     public String toString() {
-        return "previous:" + destination;
+        return "previous:" + destination.destString();
     }
 }

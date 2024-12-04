@@ -88,4 +88,13 @@ public class Code {
         }
         return -1;
     }
+    public String destString() {
+        char[] chars = getCode();
+        String out = charToInt(chars[0]).toString() + "-" + (charToInt(chars[1]) / 2);
+        return out;
+    }
+    public Code getNextCode() {
+        char[] news = {code[0], allowed[charToInt(code[1]) + 1]};
+        return new Code(news);
+    }
 }

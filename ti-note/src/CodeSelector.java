@@ -36,7 +36,7 @@ public class CodeSelector extends JPanel {
     public void setCode(Code prev) {
         char[] chars = prev.getCode();
         codeNums1.setSelectedItem(Code.charToInt(chars[0]));
-        codeNums2.setSelectedItem(Code.intToCode(chars[1]));
+        codeNums2.setSelectedItem(Code.charToInt(chars[1]) / 2);
     }
     public static Integer[] codeToInts(Code key) {
         char[] chars = key.getCode();

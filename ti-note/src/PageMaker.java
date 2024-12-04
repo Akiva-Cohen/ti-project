@@ -30,7 +30,7 @@ public class PageMaker extends JOptionPane {
         JPanel buttonPanel;
         JButton delete = new JButton("Delete");
         JButton apply = new JButton("Apply");
-        JTextField codeArea1 = new JTextField(1);
+        CodeSelector codeArea1 = new CodeSelector();
         Object[] options = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "next", "previous"};
         
         JComboBox<Object> buttonDrop = new JComboBox<Object>(options);
@@ -81,7 +81,7 @@ public class PageMaker extends JOptionPane {
                 if (buttonList.getSelectedValue() == null) {
                     buttonPanel.setVisible(false);
                 } else {
-                    codeArea1.setText(buttonList.getSelectedValue().getDestination().toString());
+                    codeArea1.setCode(buttonList.getSelectedValue().getDestination());
                     if(buttonList.getSelectedValue().getClass().equals(new NextButton(basic).getClass())) {
                         buttonDrop.setSelectedItem("next");
                     } else if (buttonList.getSelectedValue().getClass().equals(new PreviousButton(basic).getClass())) {
@@ -104,7 +104,7 @@ public class PageMaker extends JOptionPane {
                 Code outCode;
                 Button out;
                 try {
-                    outCode = new Code(codeArea1.getText().trim().toCharArray());
+                    outCode = codeArea1.getSelection();
                 } catch (IllegalArgumentException ee) {
                     showMessageDialog(null, "Invalid code");
                     throw new IllegalAccessError("can you not put bad stuff in");
@@ -156,21 +156,21 @@ public class PageMaker extends JOptionPane {
             }
             if (redo) {
                 showMessageDialog(null, "You made the same button do multiple things");
-                return promptNewPage(box.getText(), list, codeArea1.getText());
+                return promptNewPage(box.getText(), list, codeArea1.getSelection().toString());
             }
             Code outCode;
             try {
                 outCode = keyField.getSelection();
             } catch (IllegalArgumentException e) {
                 showMessageDialog(null, "use valid code pls");
-                return promptNewPage(box.getText(), list, codeArea1.getText());
+                return promptNewPage(box.getText(), list, codeArea1.getSelection().toString());
             }
             Page out;
             try {
                 out = new Page(box.getText(), outCode, buttonsOut);
             } catch (IllegalArgumentException e) {
                 showMessageDialog(null, "text too long");
-                return promptNewPage(box.getText(), list, codeArea1.getText());
+                return promptNewPage(box.getText(), list, codeArea1.getSelection().toString());
             }
             return out;
         }
