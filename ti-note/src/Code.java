@@ -69,13 +69,13 @@ public class Code {
         return false;
     }
     public static Code intToCode(int seed) {
-        if (seed > (allowed.length * allowed.length -1) || seed < 0) {
+        if (seed > (allowed.length * (allowed.length / 2) -1) || seed < 0) {
             throw new IllegalArgumentException("invalid seed");
         }
         int num1 = seed / allowed.length;
         int num2 = seed % allowed.length;
         char c1 = allowed[num1];
-        char c2 = allowed[num2];
+        char c2 = allowed[num2 * 2];
         char[] arr = {c1, c2};
         Code out = new Code(arr);
         return out;
