@@ -104,6 +104,7 @@ public class Page {
 
     public ArrayList<String> buildButtonListener() {
         ArrayList<String> out = new ArrayList<String>();
+        out.add("lbl " + key.getNextCode());
         out.add("Repeat K≠0");
         out.add("getKey→K");
         out.add("End");
