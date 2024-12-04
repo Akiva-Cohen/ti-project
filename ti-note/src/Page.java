@@ -97,7 +97,7 @@ public class Page {
         ArrayList<String> out = buildButtonListener();
         out.addAll(buttonBuilder());
         out.add("If K=45 or K=22:Goto θ");
-        out.add("Goto " + key);
+        out.add("Goto " + key.getNextCode());
         return out;
     }
     //builds backend of page
