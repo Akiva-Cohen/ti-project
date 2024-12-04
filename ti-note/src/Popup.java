@@ -2,10 +2,10 @@ import java.awt.*;
 
 import javax.swing.*;
 public class Popup extends JOptionPane {
-    static final char[] base = {'0', '0'};
+    static final char[] base = {'A', 'A'};
     static Object[] options = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "next", "previous"};
     static JComboBox<Object> buttonDrop = new JComboBox<Object>(options);
-    static JTextField codeArea1 = new JTextField(1);
+    static CodeSelector codeArea1 = new CodeSelector();
     static JPanel buttonPanel;
     static {
         buttonPanel = new JPanel(new GridLayout(2,2));
@@ -54,11 +54,11 @@ public class Popup extends JOptionPane {
         Object outDrop;
         outCode = new Code(base);
         buttonDrop.setSelectedItem(previousDrop);
-        codeArea1.setText(previousCode.toString());
+        codeArea1.setCode(previousCode);
         int worked = showConfirmDialog(null, buttonPanel, "Enter Button Information", JOptionPane.OK_CANCEL_OPTION);
         if (worked == OK_OPTION) {
             try {
-                outCode = new Code(codeArea1.getText().trim().toCharArray());
+                outCode = codeArea1.getSelection();
                 outDrop = buttonDrop.getSelectedItem();
             } catch (IllegalArgumentException e) {
                 showMessageDialog(null, "Invalid code");

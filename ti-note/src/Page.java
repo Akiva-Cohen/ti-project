@@ -32,7 +32,9 @@ public class Page {
         return key;
     }
     public String toString() {
-        return key.toString();
+        char[] chars = key.getCode();
+        String out = Code.charToInt(chars[0]).toString() + "-" + (Code.charToInt(chars[1]) / 2);
+        return out;
     }
     public String getText() {
         String out = "";

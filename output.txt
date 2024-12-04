@@ -1,0 +1,48 @@
+Lbl 01
+ClrHome
+Output(1,1,"this is page 1"
+Output(2,1,"2) go to page 2"
+Output(3,1,"3) go to page 3"
+
+Repeat K≠0
+getKey→K
+End
+If K=93:Goto 02
+If K=94:Goto 03
+If K=26:Goto 02
+If K=45 or K=22:Goto θ
+Goto 01
+
+Lbl 02
+ClrHome
+Output(1,1,"this is 2"
+Output(2,1,"1) go to 1"
+Output(3,1,"3) go to 3"
+
+Repeat K≠0
+getKey→K
+End
+If K=92:Goto 01
+If K=94:Goto 03
+If K=26:Goto 03
+If K=24:Goto 01
+If K=45 or K=22:Goto θ
+Goto 02
+
+Lbl 03
+ClrHome
+Output(1,1,"this is 3"
+Output(2,1,"1) go to 1"
+Output(3,1,"2) go to 2"
+
+Repeat K≠0
+getKey→K
+End
+If K=92:Goto 01
+If K=93:Goto 02
+If K=24:Goto 02
+If K=45 or K=22:Goto θ
+Goto 03
+
+Lbl θ
+ClrHome

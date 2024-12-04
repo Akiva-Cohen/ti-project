@@ -2,6 +2,15 @@
 public class Code {
     char[] code;
     public static final char[] allowed = {'A','B','C','D','E','F','G','H','I','J', 'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9', 'θ'};
+    public Code(Integer[] nums) {
+        this(intArrToCharsArr(nums));
+    }
+    public static char[] intArrToCharsArr(Integer[] nums) {
+        char char1 = allowed[nums[0]];
+        char char2 = allowed[nums[1] * 2];
+        char[] out = {char1, char2};
+        return out;
+    }
     public Code(char[] code) {
         try {
             if (!checkCode(code)) {
@@ -19,6 +28,11 @@ public class Code {
 
     public String toString() {
         String out = new String(code);
+        return out;
+    }
+
+    public static Integer[] charrArrToIntArr(char[] chars) {
+        Integer[] out = {charToInt(chars[0]), charToInt(chars[1])};
         return out;
     }
 
@@ -66,5 +80,12 @@ public class Code {
         Code out = new Code(arr);
         return out;
     }
-
+    public static Integer charToInt(char in) {
+        for (int i = 0; i < allowed.length; i++) {
+            if (in == allowed[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

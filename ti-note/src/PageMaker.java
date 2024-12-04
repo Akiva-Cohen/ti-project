@@ -1,11 +1,12 @@
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 public class PageMaker extends JOptionPane {
-    static final char[] chars = {'0', '0'};
+    static final char[] chars = {'A', 'A'};
     static final Code basic = new Code(chars);
     static JList<Button> buttonList;
     public static Page update(Page start) {
@@ -21,16 +22,17 @@ public class PageMaker extends JOptionPane {
         }
     }
     public static Page promptNewPage() {
-        return promptNewPage("", new DefaultListModel<Button>(), "");
+        return promptNewPage("", new DefaultListModel<Button>(), "AA");
     }
     public static Page promptNewPage(String startText, DefaultListModel<Button> startList, String key) {
-        JTextField keyField = new JTextField(key);
+        CodeSelector keyField = new CodeSelector(key);
         JTextArea box = new JTextArea(startText,10, 26);
         JPanel buttonPanel;
         JButton delete = new JButton("Delete");
         JButton apply = new JButton("Apply");
         JTextField codeArea1 = new JTextField(1);
         Object[] options = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "next", "previous"};
+        
         JComboBox<Object> buttonDrop = new JComboBox<Object>(options);
         JPanel buttonManager;
         JPanel addEdit;
@@ -63,6 +65,7 @@ public class PageMaker extends JOptionPane {
         buttonPanel.setVisible(false);
         DefaultListModel<Button> list = startList;
         buttonList = new JList<Button>(list);
+        //buttonList.setCellRenderer();
         buttonManager.remove(buttonList);
         buttonList.setVisibleRowCount(12);
         buttonManager.add(buttonList,0);
@@ -157,7 +160,7 @@ public class PageMaker extends JOptionPane {
             }
             Code outCode;
             try {
-                outCode = new Code(keyField.getText().toCharArray());
+                outCode = keyField.getSelection();
             } catch (IllegalArgumentException e) {
                 showMessageDialog(null, "use valid code pls");
                 return promptNewPage(box.getText(), list, codeArea1.getText());
