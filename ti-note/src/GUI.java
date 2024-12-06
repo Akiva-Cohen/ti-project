@@ -9,8 +9,7 @@ import java.io.*;
 
 public class GUI {
     public static void standardUI() {
-        JFrame frame = new JFrame("working");
-        frame.setLayout(new GridLayout(2, 1));
+        StandardFrame frame = new StandardFrame();
         JPanel panel = new JPanel(new GridLayout(1, 3));
         DefaultListModel<Page> list = new DefaultListModel<>();
         JList<Page> pageList = new JList<Page>(list);
@@ -121,11 +120,4 @@ public class GUI {
         } catch (IOException e) {
         }
     }
-    /*public class GUI extends JFrame implements ActionListener {
-        JTextField textBox;
-        JButton submit;
-        public GUI() {
-            setSize(500, 500);
-        }
-    }*/
 }
