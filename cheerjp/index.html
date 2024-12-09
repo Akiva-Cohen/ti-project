@@ -3,14 +3,20 @@
         <meta charset="utf-8" />
         <title>Ti-Notes online</title>
         <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+        <script>
+            console.log("head");
+        </script>
     </head>
     <body>
         <script>
+            console.log("pre");
             (async function () {
                 await cheerpjInit();
                 cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
                 await cheerpjRunJar("/app/ti-projects.jar");
+                console.log("in");
             })
+            console.log("post");
         </script>
     </body>
 </html>
