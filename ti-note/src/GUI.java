@@ -10,6 +10,7 @@ import java.io.*;
 public class GUI {
     public static void standardUI() {
         StandardFrame frame = new StandardFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         JPanel panel = new JPanel(new GridLayout(1, 3));
         DefaultListModel<Page> list = new DefaultListModel<>();
         JList<Page> pageList = new JList<Page>(list);
@@ -27,7 +28,6 @@ public class GUI {
         JButton submit = new JButton("Submit");
         frame.add(submit);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         //frame.pack();
 
