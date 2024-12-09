@@ -2,7 +2,7 @@
     public class App {
         public static void main(String[] args) throws Exception {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            try {
+          try {
                 boolean op = Popup.startUpPopUp();
                 if (op) {
                     GUI.standardUI();
@@ -12,4 +12,3 @@
             } catch (IllegalAccessError e) {}
         }
     }
-
