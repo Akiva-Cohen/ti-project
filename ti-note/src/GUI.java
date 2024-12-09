@@ -27,9 +27,10 @@ public class GUI {
         JButton submit = new JButton("Submit");
         frame.add(submit);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.pack();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setVisible(true);
+        //frame.pack();
+
         add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
