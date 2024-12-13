@@ -2,7 +2,7 @@ console.log("script2");
 //wait for it to load in
 window.addEventListener("load", function () {
     console.log("loaded");
-    this.setTimeout(function {
+    this.setTimeout(function () {
         if (this.javax && this.javax.swing) {
             console.log("swing detected");
             this.java.io.FileWriter = function (path) {
@@ -14,8 +14,10 @@ window.addEventListener("load", function () {
                 console.log("trigerswing");
                 replace();
             }
+        } else {
+            console.log("no swing");
         }
-    },1000)
+    },1500)
 });
 
 function replace() {
