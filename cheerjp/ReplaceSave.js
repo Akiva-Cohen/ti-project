@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
         } else {
             console.log("no swing");
         }
-    },1500)
+    },4000)
 });
 
 function replace() {
