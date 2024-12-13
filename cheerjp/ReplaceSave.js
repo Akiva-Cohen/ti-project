@@ -8,15 +8,15 @@ function starter() {
     });
 }
 function start() {
-        this.setTimeout(function () {
-            if (this.javax && this.javax.swing) {
+        window.setTimeout(function () {
+            if (window.javax && window.javax.swing) {
                 console.log("swing detected");
-                this.java.io.FileWriter = function (path) {
+                window.java.io.FileWriter = function (path) {
                     //downloading from browser
                     console.log("triggered");
                     replace();
                 }
-                this.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
+                window.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
                     console.log("trigerswing");
                     replace();
                 }
