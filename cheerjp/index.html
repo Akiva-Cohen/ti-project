@@ -13,16 +13,19 @@
             })();
         </script>
         <script>
+            console.log("script2");
             //wait for it to load in
             window.addEventListener("load", function () {
+                console.log("loaded");
                 //make sure java.io is there
                 if (window.java && window.java.io) {
+                    console.log("hasio");
                     //saves origional
                     const original = window.java.io.FileWriter;
                     //overriding
                     window.java.io.FileWriter = function (path) {
                         //downloading from browser
-
+                        console.log("triggered");
                         //make the link
                         var content = "test_content";
                         var blob = new Blob([content], {type:'text/plain'});
