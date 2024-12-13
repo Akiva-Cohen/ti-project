@@ -22,6 +22,7 @@ function start() {
                 }
             } else {
                 console.log("no swing");
+                console.log(Object.keys(window));
                 start();
             }
         },2000);
