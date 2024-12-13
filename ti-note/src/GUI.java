@@ -27,7 +27,6 @@ public class GUI {
         frame.add(submit);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        //frame.pack();
 
         add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -71,6 +70,7 @@ public class GUI {
                 if (program.checkConections()) {
                     JFileChooser filler = new JFileChooser();
                     int selection = filler.showSaveDialog(submit);
+                    //need to add a way to make this work on cheerpj
                     if (selection == JFileChooser.APPROVE_OPTION) {
                         File file = filler.getSelectedFile();
                         createTxt(program.programBuild(), file.getAbsolutePath());
@@ -100,7 +100,7 @@ public class GUI {
     public static void submited(String text, boolean isLoop, JFrame window) {
         TextNote note = new TextNote(text);
         text = note.programBuild(isLoop);
-        //JPanel fileWindow = new JPanel(new FlowLayout());
+        //need to find a way to make this work on cheerpj
         JFileChooser filer = new JFileChooser();
         int selection = filer.showSaveDialog(window);
         if (selection == JFileChooser.APPROVE_OPTION) {
@@ -109,8 +109,8 @@ public class GUI {
         }
         window.dispose();
     }
-    
     public static void createTxt(String text, String name) {
+        //need to find a way to make this work with cheerpj
         File output = new File(name + ".txt");
         try {
             FileWriter write = new FileWriter(output);
