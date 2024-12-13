@@ -22,8 +22,7 @@ function start() {
                 }
             } else {
                 console.log("no swing");
-                console.log(Object.keys(window));
-                console.log(window.javax);
+                console.log(document.getElementById("swingContainer"));
                 start();
             }
         },2000);
