@@ -2,12 +2,12 @@ console.log("script2");
 //wait for it to load in
 window.addEventListener("load", function () {
     console.log("loaded");
-    this.window.java.io.FileWriter = function (path) {
+    this.java.io.FileWriter = function (path) {
         //downloading from browser
         console.log("triggered");
         replace();
     }
-    this.window.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
+    this.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
         console.log("trigerswing");
         replace();
     }
