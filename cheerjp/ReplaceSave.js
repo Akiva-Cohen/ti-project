@@ -5,15 +5,15 @@ window.addEventListener("load", function () {
     this.window.java.io.FileWriter = function (path) {
         //downloading from browser
         console.log("triggered");
-        replace(path);
+        replace();
     }
     this.window.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
         console.log("trigerswing");
-        replace(parent);
+        replace();
     }
 });
 
-function replace(path) {
+function replace() {
     console.log("called")
     //make the link
     var content = "test_content";
