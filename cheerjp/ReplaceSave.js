@@ -3,7 +3,7 @@ console.log("script2");
 starter();
 function starter() {
     window.addEventListener("load", function () {
-        console.log(loaded);
+        console.log("loaded");
         start();
     });
 }
