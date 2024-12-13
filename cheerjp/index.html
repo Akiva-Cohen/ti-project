@@ -3,22 +3,12 @@
         <meta charset="utf-8" />
         <title>Ti-Notes online</title>
         <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
-    </head>
-    <body>
-        <script>
-            (async function () {
-                await cheerpjInit();
-                cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
-                await cheerpjRunJar("/app/ti-project.jar");
-            })();
-        </script>
+
         <script>
             console.log("script2");
             //wait for it to load in
             window.addEventListener("load", function () {
                 console.log("loaded");
-                //make sure java.io is there
-                //if (window.java && window.java.io) {
                     console.log("hasio");
                     window.java.io.FileWriter = function (path) {
                         //downloading from browser
@@ -33,9 +23,17 @@
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
-                    //}
                 }
             });
+        </script>
+    </head>
+    <body>
+        <script>
+            (async function () {
+                await cheerpjInit();
+                cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
+                await cheerpjRunJar("/app/ti-project.jar");
+            })();
         </script>
     </body>
 </html>
