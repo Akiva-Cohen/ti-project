@@ -1,9 +1,13 @@
 console.log("script2");
 //wait for it to load in
-start();
-function start() {
+starter();
+function starter() {
     window.addEventListener("load", function () {
-        console.log("loaded");
+        console.log(loaded);
+        start();
+    });
+}
+function start() {
         this.setTimeout(function () {
             if (this.javax && this.javax.swing) {
                 console.log("swing detected");
@@ -21,7 +25,6 @@ function start() {
                 start();
             }
         },2000);
-    });
 }
 
 function replace() {
