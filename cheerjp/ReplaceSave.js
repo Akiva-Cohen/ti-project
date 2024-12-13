@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
     this.window.java.io.FileWriter = function (path) {
         //downloading from browser
         console.log("triggered");
-        replace(path)
+        replace(path);
     }
     this.window.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
         console.log("trigerswing");
