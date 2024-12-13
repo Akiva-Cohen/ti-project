@@ -1,24 +1,28 @@
 console.log("script2");
 //wait for it to load in
-window.addEventListener("load", function () {
-    console.log("loaded");
-    this.setTimeout(function () {
-        if (this.javax && this.javax.swing) {
-            console.log("swing detected");
-            this.java.io.FileWriter = function (path) {
-                //downloading from browser
-                console.log("triggered");
-                replace();
+start();
+function start() {
+    window.addEventListener("load", function () {
+        console.log("loaded");
+        this.setTimeout(function () {
+            if (this.javax && this.javax.swing) {
+                console.log("swing detected");
+                this.java.io.FileWriter = function (path) {
+                    //downloading from browser
+                    console.log("triggered");
+                    replace();
+                }
+                this.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
+                    console.log("trigerswing");
+                    replace();
+                }
+            } else {
+                console.log("no swing");
+                start();
             }
-            this.javax.swing.JFileChooser.prototype.showSaveDialog = function(parent) {
-                console.log("trigerswing");
-                replace();
-            }
-        } else {
-            console.log("no swing");
-        }
-    },10000);
-});
+        },2000);
+    });
+}
 
 function replace() {
     console.log("called")
