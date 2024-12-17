@@ -1,3 +1,4 @@
+console.log("replacer");
 async function Java_GUI_cheerpD(lib, str) {
     console.log("called")
     //make the link

@@ -7,9 +7,12 @@
     <body>
         <script src="ReplaceSave.js"></script>
         <script>
+            console.log("preinit");
             await cheerpjInit({natives:{Java_GUI_cheerpD}});
+            console.log("postinit");
             cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
             await cheerpjRunJar("/app/ti-project.jar")
+            console.log("postrun");
         </script>
     </body>
 </html>
