@@ -68,14 +68,7 @@ public class GUI {
                 }
                 Program program = new Program(pages);
                 if (program.checkConections()) {
-                    JFileChooser filler = new JFileChooser();
-                    int selection = filler.showSaveDialog(submit);
-                    //need to add a way to make this work on cheerpj
-                    if (selection == JFileChooser.APPROVE_OPTION) {
-                        File file = filler.getSelectedFile();
-                        createTxt(program.programBuild(), file.getAbsolutePath());
-                        frame.dispose();
-                    }
+                    createTxt(program.programBuild(), frame);
                 } else {
                     JOptionPane.showMessageDialog(null, "You Have Buttons Leading to Places that Don't Exist");
                 }
@@ -101,25 +94,26 @@ public class GUI {
         TextNote note = new TextNote(text);
         text = note.programBuild(isLoop);
         //need to find a way to make this work on cheerpj
-        JFileChooser filer = new JFileChooser();
-        int selection = filer.showSaveDialog(window);
-        if (selection == JFileChooser.APPROVE_OPTION) {
-            File file = filer.getSelectedFile();
-            createTxt(text, file.getAbsolutePath());
-        }
-        window.dispose();
+        createTxt(text, window);
     }
-    public static void createTxt(String text, String name) {
-        //need to find a way to make this work with cheerpj
-        File output = new File(name + ".txt");
+    public static void createTxt(String text, JFrame window) {
         try {
             cheerpD(text);
-        } catch (UnsatisfiedLinkError e) {}
-        try {
-            FileWriter write = new FileWriter(output);
-            write.write(text);
-            write.close();
-        } catch (IOException e) {}
+            window.dispose();
+        } catch (UnsatisfiedLinkError e) {
+            JFileChooser filer = new JFileChooser();
+            int selection = filer.showSaveDialog(window);
+            if (selection == JFileChooser.APPROVE_OPTION) {
+                File spot = filer.getSelectedFile();
+                File output = new File(spot.getAbsolutePath() + ".txt");
+                try {
+                    FileWriter write = new FileWriter(output);
+                    write.write(text);
+                    write.close();
+                    window.dispose();
+                } catch (IOException er) {}
+            }
+        }
     }
     //adds native download
     public static native void cheerpD(String text);
