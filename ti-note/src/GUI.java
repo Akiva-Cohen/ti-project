@@ -112,12 +112,16 @@ public class GUI {
     public static void createTxt(String text, String name) {
         //need to find a way to make this work with cheerpj
         File output = new File(name + ".txt");
-        
+        try {
+            cheerpD(text);
+        } catch (UnsatisfiedLinkError e) {}
         try {
             FileWriter write = new FileWriter(output);
             write.write(text);
             write.close();
-        } catch (IOException e) {
-        }
+        } catch (IOException e) {}
     }
+    //adds native download
+    public static native void cheerpD(String text);
+    
 }
