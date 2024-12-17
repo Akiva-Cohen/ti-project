@@ -10,7 +10,9 @@
             console.log("preasync");
             (async function () {
                 console.log("preinit");
-                await cheerpjInit({natives:{Java_GUI_cheerpD}});
+                await cheerpjInit({natives:{async Java_GUI_cheerpD(lib, str) {
+                    console.log("called native");
+                }}});
                 console.log("postinit");
                 cheerpjCreateDisplay(window.innerWidth, window.innerHeight);
                 await cheerpjRunJar("/app/ti-project.jar");
